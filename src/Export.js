@@ -9,7 +9,7 @@ class Export extends Component {
 
     render() {
         return (
-            <button className={'button'}>Export</button>
+            <button className={'buttonSpecial'}>Export</button>
         )
     }
 }

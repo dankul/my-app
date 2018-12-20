@@ -9,7 +9,7 @@ class Import extends Component {
 
     render() {
         return (
-            <button className={'button'}>Import</button>
+            <button className={'buttonSpecial'}>Import</button>
         )
     }
 }

@@ -128,17 +128,17 @@ class Calculator extends Component {
     render() {
         return (
             <div className={'mainContainer'}>
-                <Display setHistory={this.state.valueList}/>
-                <History setHistory={this.state.valueList}/>
+                <Display history={this.state.valueList}/>
                 <Import/>
                 <Export/>
                 <button
                     onClick={() => {this.setState({valueList: []})}}
-                    className={'button'}
+                    className={'buttonSpecial'}
                 >
                     C
                 </button>
                 {this.createButton()}
+                <History history={this.state.history}/>
             </div>
         )
     }

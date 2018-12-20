@@ -7,18 +7,13 @@ class Display extends Component {
         this.createDisplay = this.createDisplay.bind(this);
     }
 
-    shouldComponentUpdate(){
-        this.createDisplay();
-        return true
-    }
-
     createDisplay () {
         return (
-            this.props.setHistory.map((obj, i) => {
+            this.props.history.map((obj, i) => {
                 return (
-                    <div key={i}>
+                    <p className={'displayComponent'} key={i}>
                         {obj.val} {obj.mark} {obj.result}
-                    </div>
+                    </p>
                 )
             })
         )
