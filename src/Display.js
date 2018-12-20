@@ -25,9 +25,8 @@ class Display extends Component {
     }
 
     render() {
-        // console.log(this.props.setHistory);
         return (
-            <div>
+            <div className={'display'}>
                 {this.createDisplay()}
             </div>
         )

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Display from "./Display";
+import History from "./History";
+import Import from "./Import";
+import Export from "./Export";
 
 const buttons = ['1', '2', '3', '+', '4', '5', '6', '-', '7', '8', '9', '/', '.', '0', '=', '*'];
 
@@ -107,7 +110,10 @@ class Calculator extends Component {
         return (
             buttons.map((button, i) => {
                 return (
-                    <div key={i}>
+                    <div
+                        key={i}
+                        className={'button'}
+                    >
                         <button
                             onClick={() => {this.createValueList(button)}}
                         >
@@ -121,9 +127,17 @@ class Calculator extends Component {
 
     render() {
         return (
-            <div>
+            <div className={'mainContainer'}>
                 <Display setHistory={this.state.valueList}/>
-                <button onClick={() => {this.setState({valueList: []})}}>C</button>
+                <History setHistory={this.state.valueList}/>
+                <Import/>
+                <Export/>
+                <button
+                    onClick={() => {this.setState({valueList: []})}}
+                    className={'button'}
+                >
+                    C
+                </button>
                 {this.createButton()}
             </div>
         )
