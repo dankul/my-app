@@ -130,7 +130,7 @@ class Calculator extends Component {
             <div className={'mainContainer'}>
                 <Display history={this.state.valueList}/>
                 <Import/>
-                <Export/>
+                <Export history={this.state.history}/>
                 <button
                     onClick={() => {this.setState({valueList: []})}}
                     className={'buttonSpecial'}

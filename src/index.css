@@ -18,10 +18,10 @@ button {
   height: 100%;
 }
 
-#root {
-  width: 45%;
-  margin: 0 auto;
-  padding-top: 5%;
+#historyContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .buttonSpecial {
@@ -40,7 +40,20 @@ button {
   font-size: 20px;
 }
 
+.displayComponentHistory {
+  color: #464c8b;
+  font-size: 20px;
+}
+
+.historyButton {
+  width: 50%;
+  height: 60px;
+}
+
 .mainContainer {
+  padding-top: 5%;
+  margin: auto;
+  width: 285px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -59,5 +72,8 @@ button {
 }
 
 .history {
+  height: 25px;
   display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }

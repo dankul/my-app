@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Export extends Component {
+class Import extends Component {
     constructor(props) {
         super(props);
 
@@ -14,4 +14,4 @@ class Export extends Component {
     }
 }
 
-export default Export;
+export default Import;
