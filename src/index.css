@@ -18,6 +18,11 @@ button {
   height: 100%;
 }
 
+div>span {
+  width: 33.3%;
+  height: 60px;
+}
+
 #historyContainer {
   width: 100%;
   display: flex;

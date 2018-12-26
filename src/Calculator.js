@@ -14,34 +14,53 @@ class Calculator extends Component {
             valueList: [],
             history: [],
             value: {},
+            stringValue: {
+                val: '',
+                result: 0
+            },
+            stringHistory: []
         };
 
         this.createButton = this.createButton.bind(this);
         this.createValueList = this.createValueList.bind(this);
         this.calculatingEquation = this.calculatingEquation.bind(this);
+        this.createStringHistory = this.createStringHistory.bind(this);
+    }
+
+    createStringHistory (val) {
+        let arr = this.state.stringHistory;
+        arr[arr.length] = val;
     }
 
     createValueList(val) {
         let valueList = this.state.valueList;
         let value = this.state.value;
+        let strHist = this.state.stringValue;
 
         switch (val) {
             case '+':
                 value.mark = val;
+                strHist.val += val;
             break;
             case '-':
                 value.mark = val;
+                strHist.val += val;
             break;
             case '/':
                 value.mark = val;
+                strHist.val += val;
             break;
             case '*':
                 value.mark = val;
+                strHist.val += val;
             break;
             case '=':
                 value.mark = val;
+                strHist.val += val;
             break;
             default:
+                strHist.val += val;
+
                 if(value.val) {
                     value.val += val;
                 } else {
@@ -49,6 +68,16 @@ class Calculator extends Component {
                 }
             break;
         }
+
+        if(value.mark === '=') {
+            this.createStringHistory(strHist);
+            this.setState({
+                stringValue: {
+                    val: ''
+                },
+            })
+        }
+
 
         if(value.mark) {
             valueList[valueList.length] = value;
@@ -64,6 +93,7 @@ class Calculator extends Component {
 
     calculatingEquation(valueList) {
         let history = this.state.history;
+        let strVal = this.state.stringValue;
 
         valueList.forEach((obj, key, arr) => {
             switch (obj.mark) {
@@ -98,6 +128,7 @@ class Calculator extends Component {
                 case '=':
                     obj.result = +arr[key - 1].res;
                     history[history.length] = arr;
+                    strVal.result = obj.result;
                     break;
                 default:
                     console.log('Unable to calculate!');
@@ -129,8 +160,8 @@ class Calculator extends Component {
         return (
             <div className={'mainContainer'}>
                 <Display history={this.state.valueList}/>
+                <Export xlsHistory={this.state.stringHistory}/>
                 <Import/>
-                <Export history={this.state.history}/>
                 <button
                     onClick={() => {this.setState({valueList: []})}}
                     className={'buttonSpecial'}

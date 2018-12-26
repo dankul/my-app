@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
+import Workbook from 'react-excel-workbook'
 
-class Import extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {};
-    }
-
+export default class Export extends Component {
     render() {
         return (
-            <button className={'buttonSpecial'}>Export</button>
+                <Workbook filename="example.xls" element={<button>Export</button>}>
+                    <Workbook.Sheet data={this.props.xlsHistory} name="Sheet A">
+                        <Workbook.Column label="Val" value="val"/>
+                        <Workbook.Column label="Result" value="result"/>
+                    </Workbook.Sheet>
+                </Workbook>
         )
     }
-}
-
-export default Import;
+};

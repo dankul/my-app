@@ -5,7 +5,8 @@ class History extends Component {
         super(props);
 
         this.state = {
-            history: []
+            history: [],
+            isDisplay: false
         };
 
         this.historyDisplay = this.historyDisplay.bind(this);
@@ -35,9 +36,10 @@ class History extends Component {
         )
     }
 
-    showHistory () {
+    showHistory (isDisplay) {
         this.setState({
-            history: this.props.history
+            history: !isDisplay ? this.props.history : [],
+            isDisplay: !isDisplay
         })
     }
 
@@ -48,11 +50,12 @@ class History extends Component {
     }
 
     render() {
+
         return (
             <div id={'historyContainer'}>
                 <button
                     className={'historyButton'}
-                    onClick={() => {this.showHistory()}}
+                    onClick={() => {this.showHistory(this.state.isDisplay)}}
                 >
                     History
                 </button>
@@ -63,10 +66,9 @@ class History extends Component {
                     Clear History
                 </button>
                 <div className={'historyDisplay'}>
-                    {this.historyDisplay()}
+                    { this.state.isDisplay ? this.historyDisplay() : null}
                 </div>
             </div>
-
         )
     }
 }
