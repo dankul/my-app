@@ -25,6 +25,15 @@ class Calculator extends Component {
         this.createValueList = this.createValueList.bind(this);
         this.calculatingEquation = this.calculatingEquation.bind(this);
         this.createStringHistory = this.createStringHistory.bind(this);
+        this.clearHistory = this.clearHistory.bind(this);
+    }
+
+    clearHistory (tru) {
+        if (tru) {
+            this.setState({
+                history: []
+            })
+        }
     }
 
     createStringHistory (val) {
@@ -32,7 +41,7 @@ class Calculator extends Component {
         arr[arr.length] = val;
     }
 
-    createValueList(val) {
+    createValueList (val) {
         let valueList = this.state.valueList;
         let value = this.state.value;
         let strHist = this.state.stringValue;
@@ -91,7 +100,7 @@ class Calculator extends Component {
         }
     }
 
-    calculatingEquation(valueList) {
+    calculatingEquation (valueList) {
         let history = this.state.history;
         let strVal = this.state.stringValue;
 
@@ -137,31 +146,31 @@ class Calculator extends Component {
         });
     }
 
-    createButton() {
-        return (
-            buttons.map((button, i) => {
-                return (
-                    <div
-                        key={i}
-                        className={'button'}
+    createButton = () => (
+        buttons.map((button, i) => {
+            return (
+                <div
+                    key={i}
+                    className={'button'}
+                >
+                    <button
+                        onClick={() => {
+                            this.createValueList(button)
+                        }}
                     >
-                        <button
-                            onClick={() => {this.createValueList(button)}}
-                        >
-                            {button}
-                        </button>
-                    </div>
-                )
-            })
-        )
-    }
+                        {button}
+                    </button>
+                </div>
+            )
+        })
+    );
 
     render() {
         return (
             <div className={'mainContainer'}>
                 <Display history={this.state.valueList}/>
-                <Export xlsHistory={this.state.stringHistory}/>
                 <Import/>
+                <Export xlsHistory={this.state.stringHistory}/>
                 <button
                     onClick={() => {this.setState({valueList: []})}}
                     className={'buttonSpecial'}
@@ -169,7 +178,7 @@ class Calculator extends Component {
                     C
                 </button>
                 {this.createButton()}
-                <History history={this.state.history}/>
+                <History history={this.state.history} clearHistory={this.clearHistory}/>
             </div>
         )
     }

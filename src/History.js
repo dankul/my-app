@@ -44,9 +44,10 @@ class History extends Component {
     }
 
     clearHistory () {
+        this.props.clearHistory(true);
         this.setState({
-            history: []
-        })
+            isDisplay: false
+            })
     }
 
     render() {

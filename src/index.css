@@ -19,7 +19,7 @@ button {
 }
 
 div>span {
-  width: 33.3%;
+  width: 50%;
   height: 60px;
 }
 
@@ -30,7 +30,7 @@ div>span {
 }
 
 .buttonSpecial {
-  width: 33.3%;
+  width: 50%;
   height: 60px;
 }
 
@@ -81,4 +81,37 @@ div>span {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
+}
+
+.input {
+  width: 100%;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  text-align: center;
+  width: 100%;
+  font-size: 1.25em;
+  font-weight: 700;
+  color: #292929;
+  background-color: rgb(170, 177, 185);
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+
+.inputfile + label:hover {
+  background-color: #dfe7ff;
+}
+
+.inputfile + label {
+  cursor: pointer; /* "hand" cursor */
 }
