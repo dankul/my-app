@@ -18,7 +18,8 @@ class Calculator extends Component {
                 val: '',
                 result: 0
             },
-            stringHistory: []
+            stringHistory: [],
+            importHistory: []
         };
 
         this.createButton = this.createButton.bind(this);
@@ -26,6 +27,13 @@ class Calculator extends Component {
         this.calculatingEquation = this.calculatingEquation.bind(this);
         this.createStringHistory = this.createStringHistory.bind(this);
         this.clearHistory = this.clearHistory.bind(this);
+        this.getImportHistory = this.getImportHistory.bind(this);
+    }
+
+    getImportHistory (hist) {
+        this.setState({
+            importHistory: [hist]
+        })
     }
 
     clearHistory (tru) {
@@ -170,7 +178,7 @@ class Calculator extends Component {
             <div className={'mainContainer'}>
                 <Display history={this.state.valueList}/>
                 <Import/>
-                <Export xlsHistory={this.state.stringHistory}/>
+                <Export xlsHistory={this.state.stringHistory} getImportHistory={this.getImportHistory}/>
                 <button
                     onClick={() => {this.setState({valueList: []})}}
                     className={'buttonSpecial'}
@@ -178,7 +186,7 @@ class Calculator extends Component {
                     C
                 </button>
                 {this.createButton()}
-                <History history={this.state.history} clearHistory={this.clearHistory}/>
+                <History impHist={this.state.importHistory} history={this.state.history} clearHistory={this.clearHistory}/>
             </div>
         )
     }

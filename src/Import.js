@@ -10,6 +10,7 @@ class Import extends Component {
         };
 
         this.getXlsHistory = this.getXlsHistory.bind(this);
+        this.dron = this.dron.bind(this);
     };
 
     getXlsHistory() {
@@ -19,6 +20,12 @@ class Import extends Component {
         readXlsFile(input.files[0]).then((rows) => {
             this.setState({xlsHistory: rows});
         });
+
+        this.dron();
+    }
+
+    dron () {
+        this.props.getImportHistory(true);
     }
 
     render() {
